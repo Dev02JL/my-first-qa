@@ -41,7 +41,7 @@ class AuthService {
           token: token,
           user: {
             email: user.email,
-            id: user._id
+            _id: user._id
           }
         }
       };
@@ -69,7 +69,7 @@ class AuthService {
           message: 'Utilisateur créé avec succès',
           user: {
             email: user.email,
-            id: user._id
+            _id: user._id
           }
         }
       };
