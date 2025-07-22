@@ -8,6 +8,7 @@ Ce projet est une API REST avec authentification construite avec Node.js, Expres
 - **Gestion des utilisateurs** : CRUD avec MongoDB
 - **Tests automatisés** : Jest + Supertest
 - **CI/CD** : GitHub Actions configuré
+- **Configuration CORS** : Pour permettre les requêtes cross-origin
 
 ## 📋 Prérequis
 
@@ -32,7 +33,7 @@ npm install
    ```bash
    # Créer un fichier .env
    MONGODB_URI=mongodb+srv://dev02:MotPasse123@cluster0.nicl2sv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-   PORT=3000
+   PORT=3001
    ```
 
 ## 🚀 Scripts disponibles
@@ -40,6 +41,11 @@ npm install
 ### Démarrer le serveur
 ```bash
 npm start
+```
+
+### Démarrer en mode développement
+```bash
+npm run dev
 ```
 
 ### Lancer les tests
@@ -50,6 +56,16 @@ npm test
 ### Lancer les tests en mode watch
 ```bash
 npm run test:watch
+```
+
+### Lancer les tests avec couverture
+```bash
+npm run test:coverage
+```
+
+### Créer les utilisateurs de test
+```bash
+npm run create-users
 ```
 
 ## 📡 Endpoints disponibles
@@ -103,6 +119,17 @@ Le projet inclut des tests automatisés couvrant :
 npm test
 ```
 
+### Cas testés
+
+| Test | Description | Résultat attendu |
+|------|-------------|------------------|
+| **Login réussi** | Connexion avec identifiants valides | Token + message de succès |
+| **Mot de passe incorrect** | Connexion avec mauvais mot de passe | Erreur 401 |
+| **Utilisateur inconnu** | Connexion avec email inexistant | Erreur 404 |
+| **Champs manquants** | Connexion sans email/password | Erreur 400 |
+| **Création utilisateur** | POST /users avec données valides | Utilisateur créé |
+| **Liste utilisateurs** | GET /users | Liste des utilisateurs |
+
 ## 🏗️ Architecture
 
 ```
@@ -114,10 +141,18 @@ QA/
 │   └── authController.js
 ├── models/              # Modèles MongoDB
 │   └── User.js
+├── scripts/             # Scripts utilitaires
+│   └── createTestUsers.js
 ├── services/            # Logique métier
 │   └── authService.js
+├── tests/               # Tests automatisés
+│   ├── auth.test.js
+│   ├── basic.test.js
+│   ├── users.test.js
+│   ├── fixtures/
+│   ├── helpers/
+│   └── setup.js
 ├── index.js             # Point d'entrée
-├── index.test.js        # Tests
 └── package.json
 ```
 
@@ -154,6 +189,7 @@ git push origin main
 - Tokens générés localement
 - Validation des entrées utilisateur
 - Gestion des erreurs appropriée
+- Configuration CORS pour le frontend
 
 ## 📝 TODO
 

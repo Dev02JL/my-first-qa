@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const User = require('./models/User');
-const connectDB = require('./config/database');
+const User = require('../models/User');
+const connectDB = require('../config/database');
 
 // Utilisateurs de test à créer
 const testUsers = [

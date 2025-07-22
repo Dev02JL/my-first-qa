@@ -1,16 +1,17 @@
 {
   "name": "qa",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Node.js avec authentification et tests automatisés",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "create-users": "node scripts/createTestUsers.js"
   },
-  "keywords": [],
+  "keywords": ["nodejs", "express", "mongodb", "authentication", "api", "tests"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
