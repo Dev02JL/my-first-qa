@@ -1,6 +1,62 @@
 # Projet QA - API Node.js avec MongoDB
 
+**Développé par : Jean-Louis Nguyen**  
+**Date : Juillet 2025**
+
+## 🎯 **Présentation du projet**
+
+### **Architecture :**
+```
+Frontend (QANuxt) ←→ Backend (QA) ←→ MongoDB Atlas
+     Port: 3000         Port: 3001
+```
+
+### **Technologies :**
+- **Backend** : Node.js + Express + MongoDB
+- **Frontend** : Nuxt.js + Vue.js + Tailwind CSS
+- **Tests** : Jest + Supertest
+- **CI/CD** : GitHub Actions
+
+### **Fonctionnalité principale :**
+- **Route `/login`** : Authentification utilisateur
+- **Interface** : Page de connexion avec formulaire email/password
+- **Gestion des états** : Messages de succès et d'erreur
+
+### **Types de tests implémentés :**
+- ✅ **Tests unitaires** : Services et contrôleurs
+- ✅ **Tests d'intégration** : API endpoints
+- ✅ **Tests de validation** : Champs requis
+- ✅ **Tests de gestion d'erreurs** : 401, 404, 400
+
+---
+
 Ce projet est une API REST avec authentification construite avec Node.js, Express, MongoDB, Jest et Supertest.
+
+## 📁 **Structure des fichiers**
+
+### **Routes et contrôleurs :**
+- **Point d'entrée** : `index.js` - Configuration Express et routes principales
+- **Route `/login`** : `controllers/authController.js` - Gestion de l'authentification
+- **Route `/users`** : `controllers/authController.js` - Gestion des utilisateurs
+
+### **Logique métier :**
+- **Service d'authentification** : `services/authService.js` - Logique de connexion
+- **Modèle utilisateur** : `models/User.js` - Schéma MongoDB
+
+### **Tests :**
+- **Tests d'authentification** : `tests/auth.test.js` - Tests de la route `/login`
+- **Tests de gestion utilisateurs** : `tests/users.test.js` - Tests des routes `/users`
+- **Tests de base** : `tests/basic.test.js` - Tests des routes de base
+- **Configuration des tests** : `tests/setup.js` - Setup global des tests
+- **Helpers de test** : `tests/helpers/testHelpers.js` - Fonctions utilitaires
+- **Fixtures** : `tests/fixtures/users.js` - Données de test
+
+### **Configuration :**
+- **Base de données** : `config/database.js` - Connexion MongoDB
+- **CI/CD** : `.github/workflows/ci.yml` - Pipeline GitHub Actions
+
+### **Scripts utilitaires :**
+- **Création d'utilisateurs de test** : `scripts/createTestUsers.js`
 
 ## 🚀 Fonctionnalités
 
@@ -20,7 +76,7 @@ Ce projet est une API REST avec authentification construite avec Node.js, Expres
 
 ```bash
 # Cloner le repository
-git clone <votre-repo-url>
+git clone git@github.com:Dev02JL/my-first-qa.git
 cd QA
 
 # Installer les dépendances
