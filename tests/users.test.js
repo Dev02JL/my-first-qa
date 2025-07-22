@@ -31,6 +31,37 @@ describe('Users Management Tests', () => {
     }
   });
 
+  // Tests qui s'exécutent en mode CI
+  describe('POST /users (Mode CI)', () => {
+    it('devrait retourner 400 pour des champs manquants', async () => {
+      // Arrange
+      const invalidData = { email: 'test@example.com' }; // password manquant
+
+      // Act
+      const response = await request(app)
+        .post('/users')
+        .send(invalidData)
+        .expect(400);
+
+      // Assert
+      expect(response.body).toHaveProperty('error', 'Email et mot de passe sont requis');
+    });
+
+    it('devrait retourner 400 pour des champs vides', async () => {
+      // Arrange
+      const emptyData = { email: '', password: '' };
+
+      // Act
+      const response = await request(app)
+        .post('/users')
+        .send(emptyData)
+        .expect(400);
+
+      // Assert
+      expect(response.body).toHaveProperty('error', 'Email et mot de passe sont requis');
+    });
+  });
+
   if (!isCI) {
     describe('POST /users', () => {
       describe('Création d\'utilisateur réussie', () => {
